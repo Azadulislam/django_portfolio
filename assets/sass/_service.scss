@@ -1,0 +1,44 @@
+// ==================start service css==============
+#service{
+    .service-content{
+        margin: 100px 0px;
+        .titleText{
+            @extend .sec-title;
+        }
+        .srvdiv{
+            @extend .all-div;
+            h3.srv-title{
+                font-weight: 400;
+                @extend .alltitle;
+                &::after{
+                    @extend .after-content;
+                    border-bottom: 2px solid $hover-color;
+                    transform: scaleX(.3);
+                    transition: .5s ease;
+                    width: 70%;
+                    margin: 0 auto;
+                }
+                
+            }
+            p{
+                color: $font-color;
+                font-size: $def-fontsiz;
+            }
+            &:hover{
+                @extend .all-div-hover;
+                h3.srv-title{
+                    &::after{
+                        @extend .after-content;
+                        border-bottom: 2px solid $hover-color;
+                        transform: scaleX(1);
+                        width: 70%;
+                        
+                    }
+                }
+            }
+        }
+    }
+    .more-btn{
+        @extend .more_btn;
+    }
+}

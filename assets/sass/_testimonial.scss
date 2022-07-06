@@ -1,0 +1,47 @@
+#testimonial{
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0, 0, 0, 0.6)), url('../image/test-bg.jpg')  top center fixed;
+    background-size: cover;
+    overflow: hidden;
+    .tstmn-con{
+        margin: 100px 0px;
+        .tst-icon{
+            color: $white;
+            font-size: 3rem;
+        }
+        .test-title{
+            @extend .sec-title;
+            color: $white;
+        }
+    }
+}
+// =================slider css=====================
+.slid-content{
+    padding: 20px;
+    .test-image{
+        width: 10rem;
+        height: 10rem;
+        margin: auto;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .tst-comm{
+        color: $title-border;
+    }
+    
+}
+.prvone,.nxtone,.nxttwo,.prvtwo{
+    border: 2px solid $hover-color;
+    border-radius: 2rem;
+    background: $hover-color;
+    color: $title-border;
+    padding: 0.2rem .47rem;
+    margin-right: 20px;
+    transition: .3s ease;
+    &:hover{
+        border: 2px solid $title-border;
+        background: transparent;
+    }   
+}
+// =================slider css end=====================

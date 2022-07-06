@@ -1,0 +1,140 @@
+//====================== start about css=============
+#about {
+  .abtContent {
+    .col-lg-8 {
+      @media screen and (max-width: 992px) {
+        margin-top: 30px;
+      }
+    }
+    margin: 100px 0px;
+    .about_img {
+      width: 100%;
+      height: auto;
+      position: relative;
+      transition: 1s ease;
+      &::after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        background: #bdc3c7;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: -1;
+      }
+      &:hover {
+        transform: translate(-15px);
+        &::before {
+          content: "";
+          height: 100%;
+          width: 100%;
+          background: $hover-color;
+          position: absolute;
+          right: 15px;
+          bottom: 15px;
+          z-index: -1;
+        }
+        &::after {
+          content: "";
+          height: 100%;
+          width: 100%;
+          background: transparent;
+          position: absolute;
+          right: 15px;
+          bottom: 15px;
+          z-index: -1;
+        }
+      }
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .about-text {
+      h1.title {
+        @extend .alltitle;
+        &::after {
+          @extend .after-content;
+        }
+        &::before {
+          @extend .after-content;
+          border-bottom: 2px solid $hover-color;
+          width: 30%;
+          z-index: 1;
+          transition: 0.5s ease;
+        }
+        &:hover {
+          &::before {
+            @extend .after-content;
+            border-bottom: 2px solid $hover-color;
+            width: 100%;
+            z-index: 1;
+          }
+        }
+      }
+      p {
+        font-size: 17px;
+        font-weight: 400;
+        color: $font-color;
+        font-family: $font3;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .social {
+        margin: 40px 0px;
+        .social-icon {
+          width: 30px;
+          box-shadow: 0px 0px 10px 3px #33333321;
+          margin-right: 10px;
+          display: inline-block;
+          text-align: center;
+          padding: 4px 0px;
+          font-size: 19px;
+          border-radius: 3px;
+          color: #000;
+          transition: 0.3s ease;
+          &:hover {
+            background: $hover-color;
+            color: #fff;
+          }
+        }
+      }
+      .aboutBtn {
+        margin: 20px 0px;
+        .hireme {
+          @extend .hireBtn;
+          background: $hover-color;
+          border: 2px solid $hover-color;
+          color: $white;
+          &:hover {
+            color: $font-color;
+            background: transparent;
+            border: 2px solid $hover-color;
+          }
+        }
+        .dwn-cv {
+          @extend .hireBtn;
+          border: 2px solid $hover-color;
+          background: transparent;
+          color: $font-color;
+          &:hover {
+            color: $white;
+            background: $hover-color;
+            border: 2px solid transparent;
+          }
+        }
+      }
+    }
+  }
+  .profileimg {
+    border: 15px solid $white;
+    box-sizing: content-box;
+    transition: 0.5s;
+    &:hover {
+      border: 15px solid $hover-color;
+    }
+  }
+  h2.title {
+    @extend .alltitle;
+  }
+}

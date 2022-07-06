@@ -1,0 +1,116 @@
+@import "variable";
+
+@import "header";
+
+@import "homebanner";
+@import "about";
+@import "skille";
+@import "service";
+@import "resume";
+@import "portfolio";
+@import "gallery";
+
+@import "testimonial";
+
+@import "blog";
+@import "contact";
+@import "review";
+#post {
+  overflow: hidden;
+  .post-con {
+    h2 {
+      @extend .alltitle;
+    }
+    .post_img {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+#page-404 {
+  height: 100vh;
+  background: url(../image/404.jpg) top center repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  overflow: hidden;
+  width: 100%;
+  padding: 0px 15px 0px 15px;
+  .content {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 0px auto 0px;
+    float: none;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    @media screen and (max-height: 359px) {
+      transform: translate(0, 0);
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      top: 0px;
+      margin-top: 60px;
+      margin-bottom: 60px;
+    }
+  }
+  p {
+    padding: 30px 0px 30px 0px;
+    color: #777;
+    font-size: 16px;
+    line-height: 30px;
+    margin: 0px;
+  }
+  .title-on-desktop {
+    position: relative;
+  }
+  .title-on-desktop {
+    .title {
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 28px;
+      line-height: 40px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+  }
+  .title-on-mobile {
+    display: none;
+    @media screen and (max-width: 649px) {
+      display: block;
+    }
+  }
+  @media screen and (max-height: 359px) {
+    min-height: 100%;
+    height: auto;
+  }
+}
+
+#thanks {
+  h1.th-title {
+    @extend .sec-title;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7ccd4;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $title-border;
+}

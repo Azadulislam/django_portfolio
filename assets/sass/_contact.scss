@@ -1,0 +1,51 @@
+// ================ contact section css ============
+#contact{
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0, 0, 0, 0.6)), url('../image/contact-bg.jpg')  top center fixed;
+    background-size: cover;
+    overflow: hidden;
+    .contact-con{
+        margin-top: 100px;
+        margin-bottom: 50px;
+        .conTitle{
+            @extend .sec-title;
+        }
+        .cotnact-form{
+            .form-input{
+                background: #0000007d;
+                border: 1px solid $font-color;
+                &:focus{
+                    outline:2px solid transparent !important;
+                    border: 1px solid $hover-color;
+                }
+            }
+            .cont-btn{
+                background: $hover-color;
+                display: block;
+                color: white;
+                line-height: 1.5;
+                text-transform: uppercase;
+                padding-left: 30px;
+                padding-right: 30px;
+                margin-top: 40px;
+                border: 2px solid transparent;
+                &:hover{
+                    background: transparent;
+                    border: 2px solid $hover-color;
+                }
+            }
+        }
+        .cont-add{
+            border-left: 2px solid $white;
+            display: block;
+            text-align: start !important;
+            padding: 25px;
+            font-family: $title-font;
+            h5{
+                color: $white;
+            }
+            p{
+                color: $font-color;
+            }
+        }
+    }
+}

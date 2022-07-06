@@ -1,0 +1,62 @@
+=================.ht for live===============
+ErrorDocument 404 https://azad.creative-jfa.com/projectPerson/404
+
+ErrorDocument 500 https://azad.creative-jfa.com/projectPerson/500
+
+RewriteEngine On
+
+
+RewriteCond %{REQUEST_URI} ^/404/$
+RewriteRule ^(.*)$ https://azad.creative-jfa.com/projectPerson/404.php [L]
+
+RewriteCond %{REQUEST_URI} ^/500/$
+RewriteRule ^(.*)$ https://azad.creative-jfa.com/projectPerson/500.php [L]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME}\.php -f 
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+=================.ht end===============
+
+
+=================config for live===============
+<?php
+    // Database info
+    define('HOST', 'localhost');
+    define('PASS', 'person123');
+    define('DBN', 'creative_projectPersonal');
+    define('USER', 'creative_projectPersonal');
+    
+    define('EMAIL', 'freelancerazad47@gmail.com');
+	define('MPASS', 'government');
+	define('MHOST', 'smtp.gmail.com');
+?>
+or
+<?php
+    // Database info
+    define('HOST', 'localhost');
+    define('PASS', 'person123');
+    define('DBN', 'creative_azad');
+    define('USER', 'creative_azad');
+    
+    define('EMAIL', 'azad@creative-jfa.com');
+	define('MPASS', 'azad1234');
+	define('MHOST', 'srv-da.ocyber.us');
+?>
+<?php
+    // Database info
+    define('HOST', 'localhost');
+    define('PASS', 'person123');
+    define('DBN', 'creative_azad');
+    define('USER', 'creative_azad');
+    
+    define('EMAIL', 'azad@creative-jfa.com');
+	define('MPASS', 'azad1234');
+	define('MHOST', 'srv-da.ocyber.us');
+?>
+=============================config end====================
+
+
+===================link blog for live===========
+https://azad.creative-jfa.com/projectPerson/
+===============end link================

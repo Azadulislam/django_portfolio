@@ -1,0 +1,66 @@
+// ====================start portfolio css===============
+.prt{
+    content: 'Azad';
+    width: 100%;
+    height: 50%;
+    background: $white;
+    position: absolute;
+    font-family: $title-font;
+    transition: .5s ease;
+}
+#portfolio{
+    padding: 100px 0px;
+    .portfolio-con{
+        .portfolio-title{
+            @extend .sec-title;
+        }
+        .port-image{
+            position: relative;
+            outline: 4px solid transparent;
+            overflow: hidden;
+            cursor: pointer;
+            transition: .5s ease;
+            &::after{
+                @extend .prt;
+                right: 100%;
+                top: 0%;
+                font-size: 2rem;
+                padding-top: 10%;
+                content: attr(title);
+            }
+            &::before{
+                @extend .prt;
+                left: 100%;
+                bottom: 0%;
+                font-size: 1rem;
+                content: attr(desc);
+            }
+            &:hover{
+                
+                outline: 4px solid $font-color;
+                &::after{
+                    right: 0%;
+                    transition: .5s ease;
+                }
+                &::before{
+                    left: 0%;
+                    transition: .5s ease;
+                }
+            }
+        }
+        .more-btn{
+            @extend .more_btn;
+        }
+        .modal{
+            .modalclose{
+                @extend .modal-close-btn;
+                background: transparent;
+                color: $black;
+                border-radius: 3px;
+                &:hover{
+                    background: $font-color;
+                }
+            }
+        }
+    }
+}

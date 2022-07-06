@@ -1,0 +1,52 @@
+//================ Review style===============
+#review{
+    margin-top: 100px;
+    .review-con{
+        margin-top: 100px;
+        .review-title{
+            @extend .sec-title;
+        }
+        .review-div{
+            @extend .all-div;
+            padding: 10px;
+            &:hover{
+                @extend .all-div-hover;
+            }
+            .customer-img{
+                img{
+                    width: 100%;
+                }
+            }
+            table.customer-dtl{
+                td{
+                    padding: 5px 10px;
+                }
+                .rating{
+                    color: $hover-color;
+                }
+                .comm{
+                    padding: 10px 0px;
+                    .cstm-comm{
+                        height: 3.4rem;
+                        overflow-y: scroll;
+                        line-height: 19px;
+                    }
+                }
+                ::-webkit-scrollbar {
+                    width: 5px;
+                  }
+                  ::-webkit-scrollbar-track {
+                    background: $white;
+                  }
+                  ::-webkit-scrollbar-thumb {
+                    background: $font-color;
+                    border-radius: 10px;
+                  }
+                  ::-webkit-scrollbar-thumb:hover {
+                    background: $black; 
+                  }
+            }
+        }
+    }
+}
+//=========== ================

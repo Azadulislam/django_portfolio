@@ -1,0 +1,244 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=7" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="keywords"
+      content="html,css,html5,azadkh,azad kh,developer azad, fullstuck web pro azad"
+    />
+    <meta name="author" content="Azadul islam" />
+    <meta name="description" content="Web veleloper" />
+    <meta property="og:image" content="" />
+
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <link
+      href="{% static 'image/uploads/logo.png' %}"
+      rel="icon"
+      type="image/png"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href=" {% static 'bootstrap\css\bootstrap.min.css' %} "
+    />
+    <title>Home Page</title>
+    <!-- animated heding -->
+    <link rel="stylesheet" href=" {% static 'css/style.css' %} " />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <!-- font link -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,423;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <!-- owl carousel css -->
+    <link rel="stylesheet" href=" {% static 'css\owl.carousel.min.css' %} " />
+    <link
+      rel="stylesheet"
+      href=" {% static 'css\owl.theme.default.min.css' %}"
+    />
+    <!-- common style.css -->
+    <link rel="stylesheet" href=" {% static 'sass/style.css' %} " />
+
+    <script src=" {% static 'js/modernizr.js' %} "></script>
+  </head>
+  <body>
+    <!-- ================Nav start================= -->
+    <section
+      id="fixdNav"
+      class="fixed-top <?= $page=='index.php'?'':''?> <?= $page=='contact.php'?'':''?> <?= $page=='service.php'?'bg-dark':''?> <?= $page=='review.php'?'bg-dark':''?> <?= $page=='portfolio.php'?'bg-dark':''?> <?= $page=='gallery.php'?'bg-dark':''?> <?= $page=='about.php'?'bg-dark':''?> <?= $page=='post.php'?'bg-dark':''?> <?= $page=='blog.php'?'bg-dark':''?> <?= $page=='thank-you.php'?'bg-dark':''?>"
+    >
+      <div class="container-fluid">
+        <nav id="mainnav" class="navbar navbar-expand-lg navbar-dark">
+          <a class="navbar-brand py-0" href="#"
+            ><img
+              width="110px"
+              class="img-fluid"
+              src="{% static 'image/uploads/logo.png' %}"
+              alt="logo"
+          /></a>
+          <button
+            class="navbar-btn"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto text-center">
+              <li class="nav-item">
+                <a
+                  class="nav-link text-capitalize <?= $page=='index.php'?'activelink':''?>"
+                  href="index"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-capitalize <?= $page=='service.php'?'activelink':''?>"
+                  href="service"
+                  >services</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-capitalize <?= $page=='portfolio.php'?'activelink':''?>"
+                  href="portfolio"
+                  >portfolio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-capitalize <?= $page=='review.php'?'activelink':''?>"
+                  href="review"
+                  >review</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-capitalize <?= $page=='blog.php'?'activelink':''?>"
+                  href="blog"
+                  >Blog</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-capitalize <?= $page=='gallery.php'?'activelink':''?>"
+                  href="gallery"
+                  >gallery</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-capitalize <?= $page=='about.php'?'activelink':''?>"
+                  href="about"
+                  >about</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-capitalize <?= $page=='contact.php'?'activelink':''?>"
+                  href="contact"
+                  >contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </section>
+    <!-- ================Nav end================= -->
+    {% block content %}{% endblock %}
+
+    <footer id="footer" class="bg-dark text-white py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center text-capitalize">
+            <p class="m-0">&copy; Web Pro Azad copyrights 2020</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src=" {% static 'js\jquery.min.js' %} "></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src=" {% static 'js\popper.min.js' %} "></script>
+    <script src=" {% static 'bootstrap\js\bootstrap.min.js' %} "></script>
+    <!--=============== Fontawesome js======================--->
+    <!-- conunter script -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="{% static 'js\jquery.counterup.min.js' %} "></script>
+    <!-- owl carousel js -->
+    <script src=" {% static 'js\owl.carousel.min.js' %} "></script>
+    <!-- common script -->
+    <script src=" {% static 'js/script.js' %} "></script>
+    <script src=" {% static 'js/main.js' %} "></script>
+    <!-- owl carousel script -->
+    <script>
+      $(document).ready(function () {
+        var owlone = $(".1st-slid");
+        owlone.owlCarousel({
+          items: 1,
+          loop: true,
+          margin: 10,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          autoplayHoverPause: true,
+        });
+        // Go to the next item
+        $(".nxtone").click(function () {
+          owlone.trigger("next.owl.carousel");
+        });
+        // Go to the previous item
+        $(".prvone").click(function () {
+          owlone.trigger("prev.owl.carousel", [300]);
+        });
+
+        var owltwo = $(".2nd-slid");
+        owltwo.owlCarousel({
+          loop: true,
+          margin: 10,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          autoplayHoverPause: true,
+          responsive: {
+            0: {
+              items: 1,
+            },
+            768: {
+              items: 2,
+            },
+            992: {
+              items: 3,
+            },
+          },
+        });
+
+        // Go to the next item
+        $(".nxttwo").click(function () {
+          owltwo.trigger("next.owl.carousel");
+        });
+
+        // Go to the previous item
+        $(".prvtwo").click(function () {
+          owltwo.trigger("prev.owl.carousel", [300]);
+        });
+
+        $(".counter").counterUp({
+          delay: 10,
+          time: 1000,
+        });
+      });
+    </script>
+  </body>
+</html>

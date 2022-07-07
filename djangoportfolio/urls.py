@@ -18,7 +18,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+admin.site.site_title = "Azadul Islam || Admin Panle"
+admin.site.site_header = "Azadul Islam || Admin Panle"
+
 urlpatterns = [
-    path('admin/', admin.site.urls), # user: AzadDjango pass: Azad92558
+    path('admin/', admin.site.urls), # user: azad pass: azad92558
     path('', include("main.urls"))
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

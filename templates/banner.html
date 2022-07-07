@@ -9,13 +9,15 @@
     <div class="container">
       <div class="home rowpt-5">
         <div class="title col-md-12 my-5">
-          <h1 class="titleText text-center text-white">Web Developer</h1>
+          <h1 class="titleText text-center text-white">
+            {{ admin.first_name }} {{ admin.last_name }}
+          </h1>
         </div>
         <section class="cd-intro">
           <h1 class="cd-headline clip is-full-width">
             <span class="font-weight-normal">I Am</span>
             <span class="cd-words-wrapper">
-              <b class="is-visible">Web Developer</b>
+              <b class="is-visible">{{ admin.title }}</b>
               <b>Graphics Designer</b>
             </span>
           </h1>

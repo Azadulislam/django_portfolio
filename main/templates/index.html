@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}
-
+    Home || 
 {% endblock  %}
 {% block content %}
 {% load static %}
 {% comment %} Banner Start {% endcomment %}
-{% include 'banner.html' %}
+{% include 'banner.html' with admin=admin %}
 {% comment %} Banner end {% endcomment %}
 {% comment %} About section start {% endcomment %}
 <section id="about">
@@ -18,8 +18,8 @@
             </div>
             <div class="col-lg-8">
                 <div class="about-text">
-                    <h1 class="text-capitalize title">I am Web Developer </h1>
-                    <p class="text-muted pl-1">I am Azadul islam. I have 3+ years of experience in Web Development. You will get 100% full support of work assured until you are fully satisfied. I'm highly experienced in 1. HTML5,CSS3, JavaScript & Jquery, Bootstrap, wordpress customization, PHP, OOP and MySql (Database)  2. any psd/photo to html, css, bootstrap, demo import  3. demo import and customize with client requirement, page build with Elementor, SEO, login, registration 4. Graphic Design: A. Logo Design C. Favicon Design D. Adobe Illustrator E. Adobe Photoshop 5. Admin Panel, Controler Others</p>
+                    <h1 class="text-capitalize title">{{ admin.title }}</h1>
+                    <p class="text-muted pl-1">{{ admin.short_desc }}</p>
                     <div class="social">
                         <a href="<?= $admin['facebook'] ?>" target="_blank"><span class="social-icon"><i class="fab fa-facebook"></i></span></a>
                         <a href="<?= $admin['twitter'] ?>" target="_blank"><span class="social-icon"><i class="fab fa-twitter"></i></span></a>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="aboutBtn">
                         <a class="hireme" href="mailto:<?= $admin['email'] ?>">hire me</a>
-                        <a class="dwn-cv" href="<?= $admin['resume'] ?>">download c.v</a>
+                        <a class="dwn-cv" href="{{ admin.resume.url }}" download>download c.v</a>
                     </div>
                 </div>
             </div>
@@ -47,22 +47,16 @@
                     <h1 class="titleText text-white">my skills</h1>
                 </div>
                 <div class="skille-con col-sm-7 m-auto text-center">
+                    {% for skill in skills %}
                     <div class="skillbar">
-                        <p class=" text-justify">HTML <span class=" d-inline-block float-right">20%</span></p>
+                        <p class=" text-justify">{{ skill.title }} <span class=" d-inline-block float-right">{{ skill.percentage }}%</span></p>
                         <div class="skldiv">
                             <div class="progress" style="height: 8px;">
-                                <div class="progress-bar" role="progressbar" style="width: 20%; height: 10px" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar" role="progressbar" style="width: {{ skill.percentage }}%; height: 10px" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="skillbar">
-                        <p class=" text-justify">HTML <span class=" d-inline-block float-right">30%</span></p>
-                        <div class="skldiv">
-                            <div class="progress" style="height: 8px;">
-                                <div class="progress-bar" role="progressbar" style="width: 30%; height: 10px" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

@@ -1,0 +1,53 @@
+// =================start skille css============
+#skille {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../image/skille-bg.jpg") top center fixed;
+  background-size: cover;
+  overflow: hidden;
+  .skille-title {
+    .code-icon {
+      color: $hover-color;
+      margin: 40px 0px;
+    }
+    h1.titleText {
+      @extend .alltitle;
+      margin-bottom: 80px;
+      &::after {
+        @extend .after-content;
+      }
+      &::before {
+        @extend .after-content;
+        border-bottom: 2px solid $hover-color;
+        transform: scaleX(0.3);
+        z-index: 1;
+        transition: 0.5s ease;
+      }
+      &:hover {
+        &::before {
+          @extend .after-content;
+          border-bottom: 2px solid $hover-color;
+          transform: scaleX(1);
+          z-index: 1;
+        }
+      }
+    }
+  }
+  .skille-con {
+    .skillbar {
+      margin-bottom: 25px;
+      p {
+        text-transform: capitalize;
+        color: #fff;
+        font-family: $title-font;
+        font-size: 16px;
+      }
+      .progress {
+        background-color: $font-color;
+        .progress-bar {
+          background: $hover-color;
+          border-radius: 1rem;
+        }
+      }
+    }
+  }
+}

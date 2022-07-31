@@ -2,7 +2,7 @@
 <header
   id="header"
   style="
-    background-image: url('{% static 'image/uploads/home-bg-20200913051006.jpeg' %}');
+    background-image: url('{{ site.banner_bg.url }}');
   "
 >
   <section id="homeBan">
@@ -18,7 +18,9 @@
             <span class="font-weight-normal">I Am</span>
             <span class="cd-words-wrapper">
               <b class="is-visible">{{ admin.title }}</b>
-              <b>Graphics Designer</b>
+              {% for title in titles %}
+              <b>{{ title.name }}</b>
+              {% endfor %}
             </span>
           </h1>
         </section>

@@ -1,25 +1,21 @@
-<?php
-    include_once ("admin/classes/Database.php");
-    $db = new classes\Database;
-    $title = "About";
-    include ("inc/header_one.php");
-    $sel_admin = $db->select("SELECT * FROM `administrator`");
-    $admin = $sel_admin->fetch_assoc();
-    $dir = "admin/uploades/img_file/";
-?>
+{% extends 'base.html' %} {% comment %} extends Base template {% endcomment %}
+{% block title %} {{ title }} {% endblock %} {% comment %} block start {% endcomment %} {% block content %} {% comment %} block start {% endcomment %} {% load static %}
 <!-- service section strart -->
 <section id="about" class="mtop">
-    <div class="container">
-        <div class="text-center">
-            <div class="abt_img my-3"><img class="img-fluid profileimg rounded-circle w-25" src="<?= $dir.$admin['profile_img'] ?>" alt="Profile Image"></div>
-            <h2 class="title text-dark"><?= $admin['title'] ?></h2>
-        </div>
-        <div>
-            <?= $admin['long_desc'] ?>
-        </div>
+  <div class="container">
+    <div class="text-center">
+      <div class="abt_img my-3">
+        <img
+          class="img-fluid profileimg rounded-circle w-25"
+          src="{{ admin.profile_pic.url }}"
+          alt="Profile Image"
+        />
+      </div>
+      <h2 class="title text-dark">{{ admin.title }}</h2>
     </div>
-    </section>
-    <!-- service section end -->
-<?php
-    include ("inc/footer.php");
-?>
+    <div>{{ admin.long_desc|safe }}</div>
+  </div>
+</section>
+<!-- service section end -->
+
+{% endblock %}

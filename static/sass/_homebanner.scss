@@ -1,0 +1,41 @@
+// ======================start home banner css===========
+#homeBan{
+    div.home{
+        margin-top: 200px;
+        margin-bottom: 200px;
+        div.title{
+            .titleText{
+                font-family: $title-font;
+                font-weight: 300;
+                font-size: 2.5rem;
+            }
+            
+        }
+        .cd-intro{
+            h1{
+                font-family: $title-font;
+            }
+        }
+    }
+    .downBtn{
+        display: block;
+        margin: auto;
+        span{
+            i{
+                padding: 10px;
+                background: #353b48;
+                border-radius: 50%;
+                text-align: center;
+                vertical-align: auto;
+                display: inline-block;
+                height: 35px;
+                width: 35px;
+                margin: auto;
+                &:hover{
+                    background: transparent;
+                }
+            }
+        }
+    }
+}
+// ======================end homeBan css===========

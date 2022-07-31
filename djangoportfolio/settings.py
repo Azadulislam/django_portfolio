@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 
+from django.contrib.messages import constants as messages
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,14 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)x_q8n($3@n-5ox_1gv=&8^@ob@@j@#v93&+@m^i17j!*m)9)t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
+    "admin_interface",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,10 +44,12 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'ckeditor',
     'django_cleanup.apps.CleanupConfig', # pip install django-cleanup
+    'colorfield' # Pip install django-colorfield
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -120,15 +126,43 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'assets/'
-STATICFILES_DIRS =[
-    Path.joinpath(BASE_DIR, 'assets')
-] 
+# STATIC_ROOT = Path.joinpath(BASE_DIR, 'static')
 
-MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media/')
-MEDIA_URL = 'image/'
+STATIC_URL = '/assets/'
+# STATICFILES_DIRS =[
+    # Path.joinpath(BASE_DIR, 'assets')
+# ] 
+
+if DEBUG:
+    STATICFILES_DIRS = [Path.joinpath(BASE_DIR, 'assets')]
+else:
+    STATIC_ROOT = Path.joinpath(BASE_DIR, 'static')
+
+
+MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
+MEDIA_URL = 'media/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'freelancerazad47@gmail.com'
+EMAIL_HOST_PASSWORD = 'rvmwfiwchemujaev'
+EMAIL_USE_TLS= True
+
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-secondary',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
+
+
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"   

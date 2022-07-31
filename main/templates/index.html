@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}
-    Home || 
+    {{ title }}
 {% endblock  %}
 {% block content %}
 {% load static %}
 {% comment %} Banner Start {% endcomment %}
-{% include 'banner.html' with admin=admin %}
+{% include 'banner.html' with admin=admin site=site titles=titles %}
 {% comment %} Banner end {% endcomment %}
 {% comment %} About section start {% endcomment %}
 <section id="about">
@@ -13,7 +13,7 @@
         <div class="row abtContent">
             <div class="col-lg-4">
                 <div class="about_img">
-                    <img src="{% static 'image/about.jpg' %}" alt="">
+                    <img src="{{ admin.profile_pic.url }}" alt="">
                 </div>
             </div>
             <div class="col-lg-8">
@@ -21,11 +21,10 @@
                     <h1 class="text-capitalize title">{{ admin.title }}</h1>
                     <p class="text-muted pl-1">{{ admin.short_desc }}</p>
                     <div class="social">
-                        <a href="<?= $admin['facebook'] ?>" target="_blank"><span class="social-icon"><i class="fab fa-facebook"></i></span></a>
-                        <a href="<?= $admin['twitter'] ?>" target="_blank"><span class="social-icon"><i class="fab fa-twitter"></i></span></a>
-                        <a href="<?= $admin['linkedin'] ?>" target="_blank"><span class="social-icon"><i class="fab fa-linkedin"></i></span></a>
-                        <a href="<?= $admin['youtube'] ?>" target="_blank"><span class="social-icon"><i class="fab fa-youtube-square"></i></span></a>
-                        <a href="<?= $admin['behance'] ?>" target="_blank"><span class="social-icon"><i class="fab fa-behance-square"></i></span></a>
+                        <a href="{{ admin.facebook }}" target="_blank"><span class="social-icon"><i class="fab fa-facebook"></i></span></a>
+                        <a href="{{ admin.twitter }}" target="_blank"><span class="social-icon"><i class="fab fa-twitter"></i></span></a>
+                        <a href="{{ admin.linkedin }}" target="_blank"><span class="social-icon"><i class="fab fa-linkedin"></i></span></a>
+                        <a href="{{ admin.skype }}" target="_blank"><span class="social-icon"><i class="fab fa-skype"></i></span></a>
                     </div>
                     <div class="aboutBtn">
                         <a class="hireme" href="mailto:<?= $admin['email'] ?>">hire me</a>
@@ -38,7 +37,7 @@
 </section>
 <!-- about section end -->
 <!-- skille section strart -->
-<section id="skille">
+<section id="skille" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{ site.skill_bg.url }}) top center fixed;">
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-5">
@@ -70,19 +69,24 @@
         <div class="service-content text-center">
             <h1 class="titleText text-dark">My Services</h1>
             <div class="row my-5">
+                {% for service in services %}
                 <div class="col-md-4 col-sm-6 my-4">
                     <div class="srvdiv">
-                        <span class="d-block"><img src="{% static 'image/uploads/service-200910064648.png' %}" alt="Service icon"></span>
-                        <h3 class="srv-title">Web Design</h3>
-                        <p>{% lorem 1 %}</p>
+                        <span class="d-block">
+                            <figure class="service-figure">
+                                <img src="{{ service.icon.url }}">
+                            </figure>
+                        </span>
+                        <h3 class="srv-title">{{ service.title }}</h3>
+                        <p>{{ service.description }}</p>
                     </div>
                 </div>
+                {% endfor %}
                 <div class="col-md-4 col-sm-6 my-4">
                     <div class="srvdiv">
                         <span class="d-block"><img src="{% static 'image/uploads/service-200910064648.png' %}" alt="Service icon"></span>
                         <h3 class="srv-title">Web Design</h3>
                         <p>{% lorem 1 %}</p>
-                        
                     </div>
                 </div>
             </div>
@@ -92,27 +96,27 @@
 </section>
 <!-- service section end -->
 <!-- resume secton strart -->
-<section id="resume">
+<section id="resume" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{ site.summery_bg.url }}) top center fixed;">
     <div class="container my-5">
         <div class="row">
             <div class="col-md-3 col-sm-6 text-center">
                 <h1 class="res-icon"><i class="far fa-smile"></i></h1>
-                <h1 class="counter count">0</h1>
+                <h1 class="counter count">{{ summerys.customer }}</h1>
                 <p class="text-capitalize">customers</p>
             </div>
             <div class="col-md-3 col-sm-6 text-center">
                 <h1 class="res-icon"><i class="fas fa-layer-group"></i></h1>
-                <h1 class="counter count">0</h1>
+                <h1 class="counter count">{{ summerys.project_completed }}</h1>
                 <p class="text-capitalize">Projects Completed</p>
             </div>
             <div class="col-md-3 col-sm-6 text-center">
                 <h1 class="res-icon"><i class="fas fa-star"></i></h1>
-                <h1 class="counter count">0</h1>
+                <h1 class="counter count">{{ summerys.reveiw }}</h1>
                 <p class="text-capitalize">Full Review</p>
             </div>
             <div class="col-md-3 col-sm-6 text-center">
                 <h1 class="res-icon"><i class="fas fa-sync-alt"></i></h1>
-                <h1 class="counter count">0</h1>
+                <h1 class="counter count">{{ summerys.running_project }}</h1>
                 <p class="text-capitalize">Running Project</p>
             </div>
         </div>
@@ -124,11 +128,13 @@
         <div class="portfolio-con text-center">
             <h1 class="portfolio-title">my portfolio</h1>
             <div class="row my-3">
-                    <div class="col-md-4 col-sm-6 mb-3">
-                        <div class="port-image" data-image="{% static 'image/uploads/portfolio-200911065735.png' %}" title="Admin Panel" data-title="Admin Panel" desc="{% lorem 1 %}" data-desc="{% lorem 1 %}">
-                            <img src="{% static 'image/uploads/portfolio-200911065735.png' %}" class="img-fluid portImg" alt="">
-                        </div>
+                {% for portfolio  in portfolios %}
+                <div class="col-md-4 col-sm-6 mb-3">
+                    <div class="port-image" data-image="{{ portfolio.image.url }}" data-title="{{ portfolio.title }}" data-desc="{{ portfolio.description }}">
+                        <img src="{% static 'image/uploads/portfolio-200911065735.png' %}" class="img-fluid portImg" alt="">
                     </div>
+                </div>
+                {% endfor %}
                 <!-- image Modal -->
                 <div class="modal fade" id="imgmodalTwo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -149,42 +155,13 @@
                     </div>
                 </div>
             </div>
-            <a href="portfolio" class="btn more-btn text-capitalize mt-4">view more</a>
+            <a href="{% url 'portfolio' %}" class="btn more-btn text-capitalize mt-4">view more</a>
         </div>
     </div>
 </section>
 <!-- portfolio section end -->
-<!-- gallery secton start -->
-<section id="gallery">
-    <div class="container">
-        <div class="gall-con  text-center">
-            <h1 class="gal-title">my gallery</h1>
-            <div class="row my-4">
-                <div class="col-md-3 col-sm-6 mb-3">
-                    <div class="gall-img">
-                        <img src="{% static 'image/uploads/gallery-200916072539.jpg' %}" class="img-fluid" alt="My image">
-                    </div>
-                </div>
-                <!-- ======modall imgae==== -->
-                <!-- Modal -->
-                <div class="modal fade" id="imgmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                        <div class="modal-content bg-transparent border-0">
-                            <button type="button" class="modalclose ml-auto" data-dismiss="modal" aria-label="Close">
-                                <i class="far fa-window-close"></i>
-                            </button>
-                            <img id="show-img" src="" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="gallery" class="btn more-btn text-capitalize mt-4">view more</a>
-        </div>
-    </div>
-</section>
-<!-- gallery secton end -->
 <!-- testimonial secton start -->
-<section id="testimonial">
+<section id="testimonial" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{ site.testimonial_bg.url }}) center fixed;">
     <div class="container">
         <div class="tstmn-con text-center">
             <h1 class="tst-icon"><i class="far fa-handshake"></i></h1>
@@ -194,18 +171,21 @@
                     <!-- owl carousel slider -->
                     <!-- Set up your HTML -->
                     <div class="owl-carousel 1st-slid">
-                        <?php
-                        $sel_test = $db->select("SELECT * FROM `review`");
-                        while ($test = $sel_test->fetch_assoc()) {
-                        ?>
+                        {% for testimonial in testimonials %}
                             <div class="slid-content text-white">
-                                <div class="test-image"><img class="rounded-circle" src="<?= $dir . $test['clnt_img'] ?>" alt=""></div>
+                                <div class="test-image"><img class="rounded-circle" src="
+                                    {% if testimonial.pro_pic %}
+                                        {{ testimonial.pro_pic.url }}
+                                    {% else %}
+                                        {{ testimonial.pro_pic_url }}
+                                    {% endif %}
+                                    " alt=""></div>
                                 <div class="tst-comm my-4">
-                                    <p class="text-muted"><?= $test['clnt_cmnt'] ?></p>
+                                    <p class="text-muted">{{ testimonial.comment }}</p>
                                 </div>
-                                <p class="tst-name"><?= $test['clnt_name'] ?></p>
+                                <p class="tst-name">{{ testimonial.name }}</p>
                             </div>
-                        <?php } ?>
+                        {% endfor %}
                     </div>
                     <button class="btn prvone"><i class="fas fa-arrow-left"></i></button>
                     <button class="btn nxtone"><i class="fas fa-arrow-right"></i></button>
@@ -215,63 +195,36 @@
     </div>
 </section>
 <!-- testimonial secton end -->
-<!-- blog secton start -->
-<section id="blog">
-    <div class="container">
-        <div class="blog-con text-center">
-            <h1 class="blogTitle">my blog</h1>
-            <div class="row">
-                <div class="col-md-12 py-3">
-                    <!-- owl carousel slider -->
-                    <!-- Set up your HTML -->
-                    <div class="owl-carousel 2nd-slid">
-                            <div class="slid-content">
-                                <div class="blog-div">
-                                    <div class="blog-img"><a href="post.php?blog=<?= $blog['slg'] ?>&id=<?= $blog['id'] ?>"><img class="img-fluid" src="{% static 'image/uploads/blog-200907040238.png' %}" alt="">
-                                            <div class="img-title">Learning Laravel</div>
-                                        </a></div>
-                                    <div class="blog-title my-4"><a href="#">
-                                            <h4>Learning Laravel</h4>
-                                        </a></div>
-                                    <div class="blog-div-foot row mb-3">
-                                        <div class="col-md-6"> <a class="btn bolg-post-btn text-muted text-capitalize" href="post?blog=<?= $blog['slg'] ?>&id=<?= $blog['id'] ?>">read more</a></div>
-                                        <div class="col-md-6"> <a class="btn bolg-post-btn text-muted text-capitalize" href="#">by: Azadul islam</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                    <button class="btn prvtwo"><i class="fas fa-arrow-left"></i></button>
-                    <button class="btn nxttwo"><i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- blog secton end -->
 <!-- contact secton start -->
-<section id="contact">
+<section id="contact" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url({{ site.contact_bg.url }}) top center fixed;">
     <div class="container">
         <div class="contact-con text-center">
             <h1 class="conTitle text-white">get in touch</h1>
-            <div class="alert alert-success text-center">We have recived your email. We will get back to you soon. Thanks!</div>
+            {% include 'message.html' %}
             <div class="row">
                 <div class="col-md-12 my-5">
-                    <form class="cotnact-form" action="mail.php" method="POST">
+                    <form class="cotnact-form needs-validation " action="{% url 'home' %}#contact" method="POST">
+                        {% csrf_token %}
                         <div class="form-group mb-3">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input id="" class="form-control form-input" placeholder="Name *" type="text" name="name" required>
+                                    {{ contact_form.name }}
+                                    {% for error in contact_form.name.errors %}
+                                        <div class="invalid-feedback text-start">
+                                            {{ error }}
+                                        </div>
+                                    {% endfor %}
                                 </div>
                                 <div class="col-sm-6">
-                                    <input id="" class="form-control form-input" placeholder="Email *" type="email" name="email" required>
+                                    {{ contact_form.email }}
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <input id="" class="form-control form-input" placeholder="Subject" type="text" name="subject" required>
+                            {{ contact_form.subject }}
                         </div>
                         <div class="form-group mb-3">
-                            <textarea class="form-control form-input" name="mess" id="" cols="30" rows="10" placeholder="Message *" required></textarea>
+                            {{ contact_form.message }}
                         </div>
                         <button class="btn cont-btn ml-0 mb-5" name="sendMess" type="submint">Send</button>
                     </form>
@@ -281,19 +234,19 @@
                 <div class="col-md-4">
                     <div class="cont-add">
                         <h5 class="">Phone</h5>
-                        <p>+8801601026191</p>
+                        <p>{{ admin.contact_no }}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="cont-add">
                         <h5 class="">Email</h5>
-                        <p>azadkh92558@gmail.com</p>
+                        <p>{{ admin.email }}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="cont-add">
                         <h5 class="">Address</h5>
-                        <p>Halsha, Natore sador, Natore</p>
+                        <p>{{ admin.address }}</p>
                     </div>
                 </div>
             </div>

@@ -16,12 +16,15 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
+from django.views.static import serve
 
 admin.site.site_title = "Azadul Islam || Admin Panle"
-admin.site.site_header = "Azadul Islam || Admin Panle"
+# admin.site.site_header = "Azadul Islam || Admin Panle"
 
 urlpatterns = [
+    re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
     path('admin/', admin.site.urls), # user: azad pass: azad92558
     path('', include("main.urls"))
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

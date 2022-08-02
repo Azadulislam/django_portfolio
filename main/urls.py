@@ -9,4 +9,4 @@ urlpatterns = [
     path('portfolio/', views.portfolio, name='portfolio'),
 ]
 
-handler404 = views.view_404
+

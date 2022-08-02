@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import EmailMultiAlternatives, send_mail
-from django.http import HttpResponse, request
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
 from django.urls import resolve, reverse
@@ -13,10 +13,12 @@ from .models import (Administrator, Portfolio, Services, SiteSetting, Skill,
 
 pages = ['profile', 'portfolio']
 portfolios = Portfolio.objects.all()
-administrator = Administrator.objects.all()[0]
-site = SiteSetting.objects.all()[0]
+
 
 def index(request):
+    portfolios = Portfolio.objects.all()
+    administrator = Administrator.objects.all()[0]
+    site = SiteSetting.objects.all()[0]
     try:
         skills = Skill.objects.all()
         services = Services.objects.all()
@@ -91,7 +93,8 @@ def contact(request):
 
 def profile(request):
     current_url = resolve(request.path_info).url_name
-    
+    administrator = Administrator.objects.all()[0]
+    site = SiteSetting.objects.all()[0]
     
     
     if current_url in pages:
@@ -109,6 +112,8 @@ def profile(request):
 
 def portfolio(request):
     current_url = resolve(request.path_info).url_name
+    administrator = Administrator.objects.all()[0]
+    site = SiteSetting.objects.all()[0]
     if current_url in pages:
         class_name = 'bg-dark'
     else:
@@ -125,4 +130,10 @@ def portfolio(request):
 
 
 def view_404(request, exception):
-    return render(request, '404.html')
+    return render(request, 'error-404.html')
+
+def view_500(request, template_name="error-500.html"):
+    return render(request, template_name)
+
+def view_400(request, exception):
+    return render(request, 'error-400.html')

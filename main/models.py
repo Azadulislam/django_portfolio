@@ -1,3 +1,4 @@
+import datetime
 from email.mime import image
 from operator import mod
 from pathlib import Path
@@ -83,6 +84,8 @@ class SiteSetting(models.Model):
     summery_bg = models.FileField(upload_to='site/', blank=False)
     testimonial_bg = models.FileField(upload_to='site/', blank=False)
     contact_bg = models.FileField(upload_to='site/', blank=False)
+    site_logo = models.FileField(upload_to='site/', blank=False)
+    created_at = models.DateTimeField(default=datetime.datetime.now(), null=True)
 
     def __str__(self):
         return self.title

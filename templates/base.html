@@ -16,14 +16,14 @@
     />
     <meta name="author" content="Azadul islam" />
     <meta name="description" content="Web veleloper" />
-    <meta property="og:image" content="" />
+    <meta property="og:image" content="{{ admin.profile_pic.url }}" />
 
-    <link rel="shortcut icon" href="" type="image/x-icon" />
     <link
-      href="{% static 'image/uploads/logo.png' %}"
-      rel="icon"
-      type="image/png"
+      rel="shortcut icon"
+      href="{{ site.site_logo.url }}"
+      type="image/x-icon"
     />
+    <link href="{{ site.site_logo.url }}" rel="icon" type="image/png" />
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"

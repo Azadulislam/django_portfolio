@@ -84,7 +84,7 @@ class testimonialAdmin(admin.ModelAdmin):
 admin.site.register(Testimonial, testimonialAdmin)
 
 class siteAdmin(admin.ModelAdmin):
-    list_display = ('title', 'copy_right', 'bannerBackground', 'skillBackground', 'summeryBackground', 'testimonialBackground', 'contactBackground')
+    list_display = ('title', 'copy_right', 'bannerBackground', 'skillBackground', 'summeryBackground', 'testimonialBackground', 'contactBackground', 'logo')
 
     def bannerBackground(self, obj):
         return format_html(f"<img width='100px' src='{obj.banner_bg.url}' />")
@@ -100,6 +100,9 @@ class siteAdmin(admin.ModelAdmin):
 
     def contactBackground(self, obj):
         return format_html(f"<img width='100px' src='{obj.contact_bg.url}' />")
+
+    def logo(self, obj):
+        return format_html(f"<img width='100px' src='{obj.site_logo.url}' />")
 
 
     def has_add_permission(self, obj) -> bool:
